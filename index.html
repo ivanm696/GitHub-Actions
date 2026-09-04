@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Remarka - Build and scale AI-powered applications with ease. Modern platform for AI-driven content applications with Celery, Redis, Qdrant, and GitHub Actions.">
+    <meta name="theme-color" content="#6366f1">
     <title>Remarka - AI-Powered Content Platform</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="container">
             <div class="nav-wrapper">
                 <div class="logo">
-                    <i class="fas fa-rocket"></i>
+                    <i class="fas fa-rocket" aria-hidden="true"></i>
                     <span>Remarka</span>
                 </div>
                 <ul class="nav-links">
@@ -22,20 +28,20 @@
                     <li><a href="#services">Services</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <div class="menu-toggle">
+                <button class="menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" aria-labelledby="hero-heading">
         <div class="container">
             <div class="hero-content">
-                <h1>Build Powerful AI Applications</h1>
+                <h1 id="hero-heading">Build Powerful AI Applications</h1>
                 <p>Remarka is a modern platform for building, deploying, and scaling AI-driven content applications with ease.</p>
                 <div class="hero-buttons">
                     <button class="btn btn-primary">Get Started</button>
@@ -43,7 +49,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <div class="floating-card">
+                <div class="floating-card" aria-hidden="true">
                     <i class="fas fa-cube"></i>
                 </div>
             </div>
@@ -51,47 +57,47 @@
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="features">
+    <section id="features" class="features" aria-labelledby="features-heading">
         <div class="container">
-            <h2>Core Features</h2>
+            <h2 id="features-heading">Core Features</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" aria-hidden="true">
                         <i class="fas fa-network-wired"></i>
                     </div>
                     <h3>Task Queues</h3>
                     <p>Celery + Redis integration for reliable async task processing and job orchestration.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" aria-hidden="true">
                         <i class="fas fa-database"></i>
                     </div>
                     <h3>Artifact Storage</h3>
                     <p>S3-compatible storage (R2/S3) for scalable file management and backup solutions.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" aria-hidden="true">
                         <i class="fas fa-brain"></i>
                     </div>
                     <h3>Vector Storage (RAG)</h3>
                     <p>Qdrant or pgvector for advanced semantic search and retrieval-augmented generation.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" aria-hidden="true">
                         <i class="fas fa-plug"></i>
                     </div>
                     <h3>AI Provider</h3>
                     <p>Pluggable AI integrations - OpenAI, Anthropic, or local models for flexibility.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" aria-hidden="true">
                         <i class="fas fa-rss"></i>
                     </div>
                     <h3>News Aggregation</h3>
                     <p>RSS parsing and web scraping with robots.txt support. Future NewsAPI integration.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">
+                    <div class="feature-icon" aria-hidden="true">
                         <i class="fas fa-gears"></i>
                     </div>
                     <h3>CI/CD Pipeline</h3>
@@ -102,30 +108,30 @@
     </section>
 
     <!-- Architecture Section -->
-    <section id="architecture" class="architecture">
+    <section id="architecture" class="architecture" aria-labelledby="architecture-heading">
         <div class="container">
-            <h2>System Architecture</h2>
+            <h2 id="architecture-heading">System Architecture</h2>
             <div class="architecture-content">
                 <div class="arch-diagram">
                     <div class="arch-layer">
                         <h4>Frontend Layer</h4>
                         <p>Modern React/Next.js UI</p>
                     </div>
-                    <div class="arch-arrow">
+                    <div class="arch-arrow" aria-hidden="true">
                         <i class="fas fa-arrow-down"></i>
                     </div>
                     <div class="arch-layer">
                         <h4>API Layer</h4>
                         <p>FastAPI/Python Backend</p>
                     </div>
-                    <div class="arch-arrow">
+                    <div class="arch-arrow" aria-hidden="true">
                         <i class="fas fa-arrow-down"></i>
                     </div>
                     <div class="arch-layer">
                         <h4>Services</h4>
                         <p>PostgreSQL, Redis, Qdrant</p>
                     </div>
-                    <div class="arch-arrow">
+                    <div class="arch-arrow" aria-hidden="true">
                         <i class="fas fa-arrow-down"></i>
                     </div>
                     <div class="arch-layer">
@@ -137,10 +143,10 @@
                     <h3>Scalable & Reliable</h3>
                     <p>Built on cloud-native technologies for production-grade performance and reliability.</p>
                     <ul>
-                        <li><i class="fas fa-check"></i> Containerized with Docker</li>
-                        <li><i class="fas fa-check"></i> Orchestrated with Kubernetes</li>
-                        <li><i class="fas fa-check"></i> Custom images via Packer</li>
-                        <li><i class="fas fa-check"></i> Automated CI/CD pipeline</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Containerized with Docker</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Orchestrated with Kubernetes</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Custom images via Packer</li>
+                        <li><i class="fas fa-check" aria-hidden="true"></i> Automated CI/CD pipeline</li>
                     </ul>
                 </div>
             </div>
@@ -148,27 +154,27 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="services">
+    <section id="services" class="services" aria-labelledby="services-heading">
         <div class="container">
-            <h2>Our Services</h2>
+            <h2 id="services-heading">Our Services</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <span class="service-number">01</span>
+                    <span class="service-number" aria-hidden="true">01</span>
                     <h3>Development</h3>
                     <p>Full-stack development with modern frameworks and best practices for scalable applications.</p>
                 </div>
                 <div class="service-card">
-                    <span class="service-number">02</span>
+                    <span class="service-number" aria-hidden="true">02</span>
                     <h3>Deployment</h3>
                     <p>Automated deployment pipelines with GitHub Actions and cloud infrastructure management.</p>
                 </div>
                 <div class="service-card">
-                    <span class="service-number">03</span>
+                    <span class="service-number" aria-hidden="true">03</span>
                     <h3>Scaling</h3>
                     <p>Horizontal and vertical scaling solutions for handling millions of users and requests.</p>
                 </div>
                 <div class="service-card">
-                    <span class="service-number">04</span>
+                    <span class="service-number" aria-hidden="true">04</span>
                     <h3>Integration</h3>
                     <p>Seamless integration with AI providers, storage systems, and external APIs.</p>
                 </div>
@@ -177,7 +183,7 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="stats">
+    <section class="stats" aria-label="Platform statistics">
         <div class="container">
             <div class="stat-card">
                 <h3>99.9%</h3>
@@ -208,33 +214,45 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact" aria-labelledby="contact-heading">
         <div class="container">
-            <h2>Get In Touch</h2>
+            <h2 id="contact-heading">Get In Touch</h2>
             <div class="contact-content">
-                <form class="contact-form" id="contactForm">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                <form class="contact-form" id="contactForm" novalidate>
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required aria-required="true">
+                        <span class="error-message" id="name-error" role="alert"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required aria-required="true">
+                        <span class="error-message" id="email-error" role="alert"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required aria-required="true"></textarea>
+                        <span class="error-message" id="message-error" role="alert"></span>
+                    </div>
                     <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
                 <div class="contact-info">
                     <div class="info-item">
-                        <i class="fas fa-envelope"></i>
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
                         <div>
                             <h4>Email</h4>
-                            <p>info@remarka.com</p>
+                            <p><a href="mailto:info@remarka.com">info@remarka.com</a></p>
                         </div>
                     </div>
                     <div class="info-item">
-                        <i class="fas fa-phone"></i>
+                        <i class="fas fa-phone" aria-hidden="true"></i>
                         <div>
                             <h4>Phone</h4>
-                            <p>+1 (555) 123-4567</p>
+                            <p><a href="tel:+15551234567">+1 (555) 123-4567</a></p>
                         </div>
                     </div>
                     <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                         <div>
                             <h4>Location</h4>
                             <p>San Francisco, CA</p>
@@ -246,7 +264,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -272,10 +290,10 @@
                 <div class="footer-section">
                     <h4>Follow Us</h4>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Discord"><i class="fab fa-discord" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
