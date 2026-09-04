@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remarka - AI-Powered Content Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <i class="fas fa-rocket"></i>
+                    <span>Remarka</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#architecture">Architecture</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Build Powerful AI Applications</h1>
+                <p>Remarka is a modern platform for building, deploying, and scaling AI-driven content applications with ease.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary">Get Started</button>
+                    <button class="btn btn-secondary">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-card">
+                    <i class="fas fa-cube"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Core Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Task Queues</h3>
+                    <p>Celery + Redis integration for reliable async task processing and job orchestration.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Artifact Storage</h3>
+                    <p>S3-compatible storage (R2/S3) for scalable file management and backup solutions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Vector Storage (RAG)</h3>
+                    <p>Qdrant or pgvector for advanced semantic search and retrieval-augmented generation.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3>AI Provider</h3>
+                    <p>Pluggable AI integrations - OpenAI, Anthropic, or local models for flexibility.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rss"></i>
+                    </div>
+                    <h3>News Aggregation</h3>
+                    <p>RSS parsing and web scraping with robots.txt support. Future NewsAPI integration.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gears"></i>
+                    </div>
+                    <h3>CI/CD Pipeline</h3>
+                    <p>GitHub Actions automation for testing, building, and deploying your applications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="architecture">
+        <div class="container">
+            <h2>System Architecture</h2>
+            <div class="architecture-content">
+                <div class="arch-diagram">
+                    <div class="arch-layer">
+                        <h4>Frontend Layer</h4>
+                        <p>Modern React/Next.js UI</p>
+                    </div>
+                    <div class="arch-arrow">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <div class="arch-layer">
+                        <h4>API Layer</h4>
+                        <p>FastAPI/Python Backend</p>
+                    </div>
+                    <div class="arch-arrow">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <div class="arch-layer">
+                        <h4>Services</h4>
+                        <p>PostgreSQL, Redis, Qdrant</p>
+                    </div>
+                    <div class="arch-arrow">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <div class="arch-layer">
+                        <h4>Infrastructure</h4>
+                        <p>Docker, Kubernetes, Cloud Deployment</p>
+                    </div>
+                </div>
+                <div class="arch-details">
+                    <h3>Scalable & Reliable</h3>
+                    <p>Built on cloud-native technologies for production-grade performance and reliability.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Containerized with Docker</li>
+                        <li><i class="fas fa-check"></i> Orchestrated with Kubernetes</li>
+                        <li><i class="fas fa-check"></i> Custom images via Packer</li>
+                        <li><i class="fas fa-check"></i> Automated CI/CD pipeline</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-number">01</span>
+                    <h3>Development</h3>
+                    <p>Full-stack development with modern frameworks and best practices for scalable applications.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-number">02</span>
+                    <h3>Deployment</h3>
+                    <p>Automated deployment pipelines with GitHub Actions and cloud infrastructure management.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-number">03</span>
+                    <h3>Scaling</h3>
+                    <p>Horizontal and vertical scaling solutions for handling millions of users and requests.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-number">04</span>
+                    <h3>Integration</h3>
+                    <p>Seamless integration with AI providers, storage systems, and external APIs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stat-card">
+                <h3>99.9%</h3>
+                <p>Uptime</p>
+            </div>
+            <div class="stat-card">
+                <h3>24/7</h3>
+                <p>Support</p>
+            </div>
+            <div class="stat-card">
+                <h3>500+</h3>
+                <p>Projects</p>
+            </div>
+            <div class="stat-card">
+                <h3>1M+</h3>
+                <p>Daily Requests</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Build Something Amazing?</h2>
+            <p>Join thousands of developers using Remarka to power their AI applications</p>
+            <button class="btn btn-primary btn-lg">Start Your Project Today</button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@remarka.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>San Francisco, CA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Remarka</h4>
+                    <p>Building the future of AI-powered applications</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Remarka. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
