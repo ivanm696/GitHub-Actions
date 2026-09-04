@@ -25,121 +25,107 @@ Services (PostgreSQL, Redis, Qdrant)
 Infrastructure (Docker, Kubernetes, Cloud)
 ```
 
-## Quick Start
+## Current: Marketing Website
 
-### Prerequisites
-- Docker & Docker Compose
-- Node.js 20+
-- Python 3.11+
-- Git
+This repository currently contains the **Remarka marketing website** — a static, responsive landing page built with HTML, CSS, and vanilla JavaScript.
 
-### Local Development
+### Quick Start
 
-1. Clone the repository:
+Simply open `index.html` in a browser to view the landing page, or serve it via:
+
 ```bash
-git clone https://github.com/ivanm696/GitHub-Actions.git
-cd GitHub-Actions
+# Using Python
+python -m http.server 8000
+
+# Using Node.js (http-server)
+npx http-server
 ```
 
-2. Start services with Docker Compose:
-```bash
-docker-compose up -d
+Then navigate to `http://localhost:8000/index.html`
+
+## Repository Structure
+
+### Current Files
+```
+├── index.html           # Marketing website landing page
+│                        # Sections: hero, features, architecture, services, stats, CTA, contact, footer
+├── script.js            # Interactive features
+│                        # - Mobile menu toggle with ARIA accessibility
+│                        # - Contact form validation with error messages
+│                        # - Smooth scroll navigation
+│                        # - Fade-in animations on scroll
+│                        # - Button ripple effects
+│                        # - Keyboard accessibility (Escape to close menu)
+├── styles.css           # Responsive styling
+│                        # - CSS Grid & Flexbox layouts
+│                        # - Mobile breakpoints (768px, 480px)
+│                        # - Smooth animations & transitions
+│                        # - Theme variables (colors, spacing)
+├── .gitignore           # Git ignore patterns for Python, Node.js, IDE, Docker
+├── .github/
+│   └── workflows/       # GitHub Actions CI/CD
+├── README.md            # This file
+└── LICENSE              # MIT License (coming soon)
 ```
 
-3. Install dependencies:
-```bash
-# Backend
-cd apps/api
-pip install -r requirements.txt
+## Website Sections
 
-# Frontend
-cd ../frontend
-npm install
-npm run build
-```
+- **Hero** — Call-to-action with feature highlights
+- **Features** — 6 core infrastructure components with icons
+- **Architecture** — Layered system design diagram
+- **Services** — Development, Deployment, Scaling, Integration
+- **Stats** — Key metrics (uptime, support, projects, requests)
+- **CTA** — Call-to-action to start a project
+- **Contact** — Contact form with validation and contact info
+- **Footer** — Links, social media, copyright
 
-4. Access the application:
-- Frontend: http://localhost:3000
-- API: http://localhost:8000
-- Database: localhost:5432 (postgres)
-- Redis: localhost:6379
-- Qdrant: http://localhost:6333
+## Future: Full Platform
 
-## Project Structure
+The repository is planned to evolve into a complete AI platform with the following structure:
 
 ```
 ├── apps/
 │   ├── api/              # FastAPI Backend
 │   │   ├── requirements.txt
-│   │   └── Dockerfile
+│   │   ├── Dockerfile
+│   │   └── README.md
 │   └── frontend/         # Next.js Frontend
 │       ├── package.json
-│       └── Dockerfile
+│       ├── Dockerfile
+│       └── README.md
 ├── infra/
 │   └── packer/          # Machine image builder
-├── .github/
-│   └── workflows/       # GitHub Actions CI/CD
-├── docker-compose.yml   # Local development setup
-└── README.md
+│       └── README.md
+├── docker-compose.yml   # Full-stack local development
+└── [... additional files ...]
 ```
 
-## Services
-
-### Development
-Full-stack development with modern frameworks and best practices for scalable applications.
-
-### Deployment
-Automated deployment pipelines with GitHub Actions and cloud infrastructure management.
-
-### Scaling
-Horizontal and vertical scaling solutions for handling millions of users and requests.
-
-### Integration
-Seamless integration with AI providers, storage systems, and external APIs.
+### Planned Components
+- **Backend API** (FastAPI/Python) with task queue support
+- **Frontend Application** (Next.js/React)
+- **Infrastructure as Code** (Packer for custom images)
+- **Docker Compose** orchestration for local development
+- **Full CI/CD Pipeline** with GitHub Actions
 
 ## CI/CD Pipeline
 
 The repository includes GitHub Actions workflows for:
-- Automated testing
-- Docker image building
-- Machine image creation with Packer
-- Deployment to cloud infrastructure
+- Automated testing (planned)
+- Docker image building (planned)
+- Machine image creation with Packer (planned)
+- Deployment to cloud infrastructure (planned)
 - GitHub Pages static site hosting
-
-## Deployment
-
-### Docker
-Build and run containerized applications:
-```bash
-docker-compose build
-docker-compose up
-```
-
-### Kubernetes
-Deploy to Kubernetes clusters with automated scaling and load balancing.
-
-### Packer
-Create custom machine images for cloud deployments:
-```bash
-packer validate infra/packer
-packer build infra/packer
-```
 
 ## Configuration
 
-Create `.env` file with your configuration:
+For future full-stack deployment, create a `.env` file:
+
 ```env
 POSTGRES_PASSWORD=your_secure_password
 API_URL=http://localhost:8000
 REDIS_URL=redis://localhost:6379
-QDANT_URL=http://localhost:6333
+QDRANT_URL=http://localhost:6333
 ```
-
-## Documentation
-
-- [API Documentation](./apps/api/README.md)
-- [Frontend Guide](./apps/frontend/README.md)
-- [Infrastructure Setup](./infra/README.md)
 
 ## Support
 
@@ -157,6 +143,10 @@ Contributions are welcome! Please read our contributing guidelines and submit pu
 
 ## Roadmap
 
+- [x] Marketing website landing page
+- [ ] Backend API (FastAPI)
+- [ ] Frontend application (Next.js)
+- [ ] Docker Compose orchestration
 - [ ] NewsAPI integration
 - [ ] Advanced RAG capabilities
 - [ ] Multi-model AI provider support
