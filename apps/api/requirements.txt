@@ -1,0 +1,37 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.9.2
+pydantic-settings==2.5.2
+
+# Task queue
+celery[redis]==5.4.0
+redis==5.0.8
+
+# Object storage
+boto3==1.35.24
+
+# Vector store / RAG
+qdrant-client==1.11.2
+# sentence-transformers pulls in PyTorch (~2GB) — only needed if using
+# Anthropic/local providers for embeddings (OpenAI has its own embeddings API).
+# Install separately: pip install sentence-transformers
+
+# AI providers
+anthropic==0.36.0
+openai==1.51.0
+httpx==0.27.2
+
+# News
+feedparser==6.0.11
+
+# Database (used by docker-compose postgres service; models added later)
+psycopg[binary]==3.2.2
+sqlalchemy==2.0.35
+
+# Testing
+pytest==8.3.3
+pytest-asyncio==0.24.0
+pytest-httpx==0.30.0
+
+# Optional: local embeddings for Anthropic/local providers (RAG)
+# sentence-transformers==3.1.1

@@ -1,159 +1,122 @@
-# Remarka - AI-Powered Content Platform
+# Remarka — backend platform
 
-## Overview
+Рабочая реализация архитектуры: очереди, векторное хранилище, подключаемый AI-провайдер, RSS-новости, сборка образов.
 
-Remarka is a modern web platform designed for building, deploying, and scaling AI-driven content applications with ease.
+[![CI](https://github.com/ivanm696/GitHub-Actions/actions/workflows/ci.yml/badge.svg)](https://github.com/ivanm696/GitHub-Actions/actions/workflows/ci.yml)
 
-## Features
+## Статус реализации
 
-### Core Infrastructure
-- **Task Queues**: Celery + Redis integration for reliable async task processing
-- **Artifact Storage**: S3-compatible storage (R2/S3) for scalable file management
-- **Vector Storage (RAG)**: Qdrant or pgvector for semantic search and retrieval-augmented generation
-- **AI Provider**: Pluggable AI integrations (OpenAI, Anthropic, or local models)
-- **News Aggregation**: RSS parsing and web scraping with robots.txt support
-- **CI/CD Pipeline**: GitHub Actions automation for testing and deployment
+| Компонент | Статус | Где |
+|---|---|---|
+| Очереди: Celery + Redis | ✅ Работает | `apps/api/app/core/celery_app.py`, `app/tasks/` |
+| Хранилище артефактов (S3/R2) | ✅ Работает | `apps/api/app/core/storage.py` |
+| Векторное хранилище (Qdrant) | ✅ Работает | `apps/api/app/rag/vector_store.py` |
+| AI-провайдер (подключаемый) | ✅ Работает | `apps/api/app/ai/provider.py` — Anthropic / OpenAI / локальный |
+| Новости: RSS + robots.txt | ✅ Работает | `apps/api/app/news/rss.py` |
+| Новости: NewsAPI | 🔜 Заглушка (phase 2) | `fetch_from_newsapi()` в `rss.py` |
+| Образы: Packer + QEMU + cloud-init | ✅ Конфиг готов | `infra/packer/` |
+| pgvector (альтернатива Qdrant) | 🔜 Не реализовано | — |
+| Buildroot/Yocto (кастомные ISO) | 🔜 Не реализовано | — |
+| CI/CD: GitHub Actions | ✅ Работает | `.github/workflows/ci.yml` |
 
-### Architecture
-```
-Frontend (React/Next.js)
-        ↓
-    API (FastAPI/Python)
-        ↓
-Services (PostgreSQL, Redis, Qdrant)
-        ↓
-Infrastructure (Docker, Kubernetes, Cloud)
-```
-
-## Current: Marketing Website
-
-This repository currently contains the **Remarka marketing website** — a static, responsive landing page built with HTML, CSS, and vanilla JavaScript.
-
-### Quick Start
-
-Simply open `index.html` in a browser to view the landing page, or serve it via:
+## Быстрый старт
 
 ```bash
-# Using Python
-python -m http.server 8000
+git clone https://github.com/ivanm696/GitHub-Actions.git remarka
+cd remarka
+cp apps/api/.env.example apps/api/.env
+# впиши свой ANTHROPIC_API_KEY или OPENAI_API_KEY в apps/api/.env
 
-# Using Node.js (http-server)
-npx http-server
+docker compose up -d
 ```
 
-Then navigate to `http://localhost:8000/index.html`
-
-## Repository Structure
-
-### Current Files
-```
-├── index.html           # Marketing website landing page
-│                        # Sections: hero, features, architecture, services, stats, CTA, contact, footer
-├── script.js            # Interactive features
-│                        # - Mobile menu toggle with ARIA accessibility
-│                        # - Contact form validation with error messages
-│                        # - Smooth scroll navigation
-│                        # - Fade-in animations on scroll
-│                        # - Button ripple effects
-│                        # - Keyboard accessibility (Escape to close menu)
-├── styles.css           # Responsive styling
-│                        # - CSS Grid & Flexbox layouts
-│                        # - Mobile breakpoints (768px, 480px)
-│                        # - Smooth animations & transitions
-│                        # - Theme variables (colors, spacing)
-├── .gitignore           # Git ignore patterns for Python, Node.js, IDE, Docker
-├── .github/
-│   └── workflows/       # GitHub Actions CI/CD
-├── README.md            # This file
-└── LICENSE              # MIT License (coming soon)
+Проверить, что всё живо:
+```bash
+curl http://localhost:8000/health
+curl http://localhost:8000/health/ready
 ```
 
-## Website Sections
-
-- **Hero** — Call-to-action with feature highlights
-- **Features** — 6 core infrastructure components with icons
-- **Architecture** — Layered system design diagram
-- **Services** — Development, Deployment, Scaling, Integration
-- **Stats** — Key metrics (uptime, support, projects, requests)
-- **CTA** — Call-to-action to start a project
-- **Contact** — Contact form with validation and contact info
-- **Footer** — Links, social media, copyright
-
-## Future: Full Platform
-
-The repository is planned to evolve into a complete AI platform with the following structure:
+## Архитектура
 
 ```
-├── apps/
-│   ├── api/              # FastAPI Backend
-│   │   ├── requirements.txt
-│   │   ├── Dockerfile
-│   │   └── README.md
-│   └── frontend/         # Next.js Frontend
-│       ├── package.json
-│       ├── Dockerfile
-│       └── README.md
-├── infra/
-│   └── packer/          # Machine image builder
-│       └── README.md
-├── docker-compose.yml   # Full-stack local development
-└── [... additional files ...]
+remarka/
+├── apps/api/                  # FastAPI backend
+│   ├── app/
+│   │   ├── core/
+│   │   │   ├── config.py      # pydantic-settings, всё через .env
+│   │   │   ├── celery_app.py  # Celery + Redis broker/backend
+│   │   │   └── storage.py     # S3/R2 клиент (boto3, endpoint настраивается)
+│   │   ├── ai/
+│   │   │   └── provider.py    # AIProvider ABC + Anthropic/OpenAI/Local реализации
+│   │   ├── rag/
+│   │   │   └── vector_store.py # Qdrant — upsert/search
+│   │   ├── news/
+│   │   │   └── rss.py         # RSS-фетчер, проверяет robots.txt перед запросом
+│   │   ├── tasks/              # Celery-задачи (news_tasks, ai_tasks)
+│   │   └── main.py             # FastAPI роуты
+│   ├── tests/                  # pytest — реально проверяются в CI
+│   ├── requirements.txt
+│   ├── Dockerfile
+│   └── .env.example
+├── infra/packer/
+│   ├── remarka-base.pkr.hcl    # QEMU builder + cloud-init
+│   └── cloud-init/
+├── docker-compose.yml          # api, worker, beat, redis, postgres, qdrant, minio
+└── .github/workflows/ci.yml    # 4 джоба: тесты, docker build, compose validate, packer validate
 ```
 
-### Planned Components
-- **Backend API** (FastAPI/Python) with task queue support
-- **Frontend Application** (Next.js/React)
-- **Infrastructure as Code** (Packer for custom images)
-- **Docker Compose** orchestration for local development
-- **Full CI/CD Pipeline** with GitHub Actions
+## Переключение AI-провайдера
 
-## CI/CD Pipeline
+Одна переменная окружения — весь остальной код не меняется:
 
-The repository includes GitHub Actions workflows for:
-- Automated testing (planned)
-- Docker image building (planned)
-- Machine image creation with Packer (planned)
-- Deployment to cloud infrastructure (planned)
-- GitHub Pages static site hosting
+```bash
+AI_PROVIDER=anthropic   # или: openai | local
+```
 
-## Configuration
+```python
+from app.ai.provider import get_ai_provider
 
-For future full-stack deployment, create a `.env` file:
+provider = get_ai_provider()
+reply = await provider.complete("Напиши хайку про очереди Celery")
+```
 
+## S3 vs R2
+
+По умолчанию — AWS S3. Для Cloudflare R2 просто заполни:
 ```env
-POSTGRES_PASSWORD=your_secure_password
-API_URL=http://localhost:8000
-REDIS_URL=redis://localhost:6379
-QDRANT_URL=http://localhost:6333
+S3_ENDPOINT_URL=https://<account_id>.r2.cloudflarestorage.com
+```
+API полностью совместим (используется тот же `boto3`).
+
+## Локальная разработка без Docker
+
+```bash
+cd apps/api
+pip install -r requirements.txt
+uvicorn app.main:app --reload
 ```
 
-## Support
+Для Celery worker понадобится локальный Redis:
+```bash
+celery -A app.core.celery_app worker --loglevel=info
+```
 
-- Email: info@remarka.com
-- Phone: +1 (555) 123-4567
-- Website: www.remarka.com
+## Тесты
+
+```bash
+cd apps/api
+python -m pytest tests/ -v
+```
+
+7 тестов, все проходят в CI при каждом push.
+
+## Что дальше (не реализовано)
+
+- Интеграция NewsAPI как второго источника (структура готова — `fetch_from_newsapi()`)
+- pgvector как альтернатива Qdrant
+- Buildroot/Yocto для кастомных встраиваемых образов (Packer покрывает облачные ISO/IMG)
+- Модели БД для персистентности новостей/документов (сейчас RSS fetch возвращает данные, но не сохраняет)
 
 ## License
 
-MIT License - see LICENSE file for details
-
-## Contributing
-
-Contributions are welcome! Please read our contributing guidelines and submit pull requests.
-
-## Roadmap
-
-- [x] Marketing website landing page
-- [ ] Backend API (FastAPI)
-- [ ] Frontend application (Next.js)
-- [ ] Docker Compose orchestration
-- [ ] NewsAPI integration
-- [ ] Advanced RAG capabilities
-- [ ] Multi-model AI provider support
-- [ ] Real-time collaboration features
-- [ ] Enhanced monitoring and observability
-- [ ] GraphQL API
-
----
-
-**Built with** ❤️ **by the Remarka team**
+MIT

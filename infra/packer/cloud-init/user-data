@@ -1,0 +1,18 @@
+#cloud-config
+users:
+  - name: ubuntu
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - "REPLACE_WITH_YOUR_SSH_PUBLIC_KEY"
+
+package_update: true
+package_upgrade: true
+
+packages:
+  - curl
+  - git
+  - ca-certificates
+
+runcmd:
+  - echo "cloud-init provisioning complete" > /var/log/remarka-cloud-init.log
