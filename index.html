@@ -44,8 +44,8 @@
                 <h1 id="hero-heading">Build Powerful AI Applications</h1>
                 <p>Remarka is a modern platform for building, deploying, and scaling AI-driven content applications with ease.</p>
                 <div class="hero-buttons">
-                    <button class="btn btn-primary">Get Started</button>
-                    <button class="btn btn-secondary">Learn More</button>
+                    <button class="btn btn-primary" id="btnGetStarted">Get Started</button>
+                    <button class="btn btn-secondary" id="btnLearnMore">Learn More</button>
                 </div>
             </div>
             <div class="hero-image">
@@ -209,7 +209,7 @@
         <div class="container">
             <h2>Ready to Build Something Amazing?</h2>
             <p>Join thousands of developers using Remarka to power their AI applications</p>
-            <button class="btn btn-primary btn-lg">Start Your Project Today</button>
+            <button class="btn btn-primary btn-lg" id="btnStartProject">Start Your Project Today</button>
         </div>
     </section>
 
@@ -303,6 +303,11 @@
         </div>
     </footer>
 
+    <script>
+        // Backend API base URL — same repo's FastAPI service (see apps/api/).
+        // Update this to your deployed API URL once the backend is hosted.
+        window.REMARKA_API_BASE = window.REMARKA_API_BASE || 'http://localhost:8000';
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
