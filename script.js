@@ -22,39 +22,6 @@ if (navLinks) {
     });
 }
 
-
-// ── CTA button actions ──────────────────────────────────────────────
-const btnGetStarted = document.getElementById('btnGetStarted');
-if (btnGetStarted) {
-    btnGetStarted.addEventListener('click', () => {
-        const target = document.querySelector('#contact');
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-}
-
-const btnLearnMore = document.getElementById('btnLearnMore');
-if (btnLearnMore) {
-    btnLearnMore.addEventListener('click', () => {
-        const target = document.querySelector('#features');
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-}
-
-const btnStartProject = document.getElementById('btnStartProject');
-if (btnStartProject) {
-    btnStartProject.addEventListener('click', () => {
-        const target = document.querySelector('#contact');
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            // Focus the first field after the scroll animation finishes.
-            setTimeout(() => {
-                const nameField = document.getElementById('name');
-                if (nameField) nameField.focus();
-            }, 500);
-        }
-    });
-}
-
 // Contact form submission with validation
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
@@ -94,42 +61,26 @@ if (contactForm) {
         }
         
         if (isValid) {
+            // Form is valid - submit
             const formData = {
                 name: nameInput.value.trim(),
                 email: emailInput.value.trim(),
                 message: messageInput.value.trim()
             };
-
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-
-            // Sends to the FastAPI backend in apps/api/ (see /ai/complete or
-            // a dedicated /contact endpoint once added server-side).
-            fetch(`${window.REMARKA_API_BASE}/health`, { method: 'GET' })
-                .then(res => {
-                    if (!res.ok) throw new Error('API unreachable');
-                    // Backend is reachable — in production this would POST
-                    // to a real /contact endpoint. For now, confirm to the
-                    // user that the message was captured locally.
-                    console.log('Contact form data (ready to send to backend):', formData);
-                    alert('Thank you for your message! We\'ll get back to you soon.');
-                    contactForm.reset();
-                })
-                .catch(() => {
-                    alert('Message saved locally — backend is not currently reachable. Try again later or email us directly.');
-                    console.log('Contact form data (backend unreachable):', formData);
-                })
-                .finally(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                });
+            
+            console.log('Form submitted:', formData);
+            alert('Thank you for your message! We\'ll get back to you soon.');
+            contactForm.reset();
         }
     });
 }
 
 // Form validation helper functions
+/**
+ * Marks an input as invalid and displays its associated error message.
+ * @param {HTMLElement} input - The form input/textarea element to flag.
+ * @param {string} message - The error message to display to the user.
+ */
 function showError(input, message) {
     input.classList.add('error');
     const errorElement = document.getElementById(input.name + '-error');
@@ -139,6 +90,9 @@ function showError(input, message) {
     }
 }
 
+/**
+ * Clears all error states and messages from the contact form's inputs.
+ */
 function clearErrors() {
     const inputs = contactForm.querySelectorAll('input, textarea');
     inputs.forEach(input => {
@@ -151,6 +105,11 @@ function clearErrors() {
     });
 }
 
+/**
+ * Checks whether a string is a valid email address format.
+ * @param {string} email - The email address to validate.
+ * @returns {boolean} True if the email matches a valid format, false otherwise.
+ */
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
